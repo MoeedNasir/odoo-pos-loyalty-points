@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherit loyalty program form view to add points expiry date -->
+        <record id="loyalty_program_view_form_inherit_expiry" model="ir.ui.view">
+            <field name="name">loyalty.program.form.inherit.expiry</field>
+            <field name="model">loyalty.program</field>
+            <field name="inherit_id" ref="loyalty.loyalty_program_view_form"/>
+            <field name="arch" type="xml">
+                <field name="date_to" position="after">
+                    <field name="points_expiry_date" 
+                           invisible="1"
+                           widget="datetime"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Inherit loyalty program tree view to show expiry date -->
+        <record id="loyalty_program_view_tree_inherit_expiry" model="ir.ui.view">
+            <field name="name">loyalty.program.tree.inherit.expiry</field>
+            <field name="model">loyalty.program</field>
+            <field name="inherit_id" ref="loyalty.loyalty_program_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="program_type" position="after">
+                    <field name="points_expiry_date" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_loyalty_card_form_inherit_datetime" model="ir.ui.view">
+            <field name="name">loyalty.card.form.inherit.datetime</field>
+            <field name="model">loyalty.card</field>
+            <field name="inherit_id" ref="loyalty.loyalty_card_view_form"/>
+            <field name="arch" type="xml">
+                <field name="expiration_date" position="attributes">
+                    <attribute name="widget">datetime</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
+

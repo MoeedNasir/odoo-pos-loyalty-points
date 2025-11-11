@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Cron: Expire Loyalty Points (Program Level) -->
+        <record id="ir_cron_expire_loyalty_points" model="ir.cron" forcecreate="True">
+            <field name="name">Expire Loyalty Points (Program Level)</field>
+            <field name="model_id" search="[('model', '=', 'loyalty.program')]"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_expire_loyalty_points()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <!-- Cron: Expire Loyalty Cards (Card Level) -->
+        <record id="ir_cron_expire_loyalty_cards" model="ir.cron" forcecreate="True">
+            <field name="name">Expire Loyalty Cards (Card Level)</field>
+            <field name="model_id" search="[('model', '=', 'loyalty.card')]"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_expire_loyalty_cards()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
